@@ -33,19 +33,28 @@ public class AlienRepo {
 
     public List<Alien> findAll(){
         String sql = "SELECT * FROM alien";
-        RowMapper<Alien> mapper = new RowMapper<Alien>() {
-            @Override
-            public Alien mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Alien a = new Alien();
-                a.setId(rs.getInt(1));
-                a.setName(rs.getString(2));
-                a.setTech(rs.getString(3));
+//        RowMapper<Alien> mapper = new RowMapper<Alien>() {
+//            @Override
+//            public Alien mapRow(ResultSet rs, int rowNum) throws SQLException {
+//                Alien a = new Alien();
+//                a.setId(rs.getInt(1));
+//                a.setName(rs.getString(2));
+//                a.setTech(rs.getString(3));
+//
+//                return a;
 
-                return a;
-            }
-        };
 
-        List<Alien> aliens = template.query(sql , mapper);
+        // Using Lambda Expression
+        List<Alien> aliens = template.query(sql , (rs , rowNum) -> {
+            Alien a = new Alien();
+            a.setId(rs.getInt(1));
+            a.setName(rs.getString(2));
+            a.setTech(rs.getString(3));
+
+            return a;
+        });
+
+
         return aliens;
     }
 }
