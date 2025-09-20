@@ -5,6 +5,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CalculatorController {
@@ -14,15 +16,56 @@ public class CalculatorController {
     }
 
     @RequestMapping("add")
-    public String add(HttpServletRequest req){
-        int number1 = Integer.parseInt(req.getParameter("num1"));
-        int number2 = Integer.parseInt(req.getParameter("num2"));
+    // We got parameters through HttpServletRequest
+//    public String add(HttpServletRequest req){
+//        int number1 = Integer.parseInt(req.getParameter("num1"));
+//        int number2 = Integer.parseInt(req.getParameter("num2"));
+//        int sum = number1 + number2;
+//
+//        HttpSession session = req.getSession();
+//
+//        session.setAttribute("sum" , sum);
+//
+//        return "result";
+//    }
+
+
+    // @ RequestParam
+//    public String add(@RequestParam("num1") int number1 ,@RequestParam("num2") int number2 , HttpSession session){
+//        int sum = number1 + number2;
+//
+//        session.setAttribute("sum" , sum);
+//
+//        return "result";
+//    }
+
+    // Model and view
+//    public ModelAndView add(@RequestParam("num1") int number1 ,@RequestParam("num2") int number2 , HttpSession session){
+//
+//        ModelAndView mv = new ModelAndView();
+//
+//        mv.setViewName("result.jsp");
+//
+//        int sum = number1 + number2;
+//
+//        mv.addObject("sum" , sum);
+//
+//        return mv;
+//    }
+
+
+    // Model and (Model view : it is also used to get model object but with the help of map)
+
+    public ModelAndView add(@RequestParam("num1") int number1 ,@RequestParam("num2") int number2 , HttpSession session){
+
+        ModelAndView mv = new ModelAndView();
+
+        mv.setViewName("result.jsp");
+
         int sum = number1 + number2;
 
-        HttpSession session = req.getSession();
+        mv.addObject("sum" , sum);
 
-        session.setAttribute("sum" , sum);
-
-        return "result";
+        return mv;
     }
 }
