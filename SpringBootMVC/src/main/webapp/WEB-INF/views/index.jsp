@@ -9,9 +9,9 @@
 <body>
     Welcome to the calculator
 
-    <form action = "add">
-        Enter first number : <input type="text" name="num1"><br>
-        Enter second number : <input type="text" name="num2"><br>
+    <form action = "addAlien">
+        Enter your ID : <input type="text" name="aid"><br>
+        Enter your Name : <input type="text" name="aname"><br>
         <input type="submit">
     </form>
 </body>

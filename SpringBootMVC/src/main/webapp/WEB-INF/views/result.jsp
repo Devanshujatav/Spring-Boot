@@ -7,7 +7,8 @@
 
 </head>
 <body>
-    result iz : ${sum}
+    result is : ${a1}
 
+    Welcome Back : ${name}
 </body>
 </html>
