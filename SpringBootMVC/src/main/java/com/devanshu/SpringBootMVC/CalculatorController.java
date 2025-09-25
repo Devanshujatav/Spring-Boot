@@ -4,11 +4,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class CalculatorController {
@@ -96,8 +96,18 @@ public class CalculatorController {
 //        return "result";
 //    }
 
+
+    @GetMapping
+    public String getAliens(Model m){
+        List<Alien> aliens = Arrays.asList(new Alien(101 , "Devanshu") , new Alien(102 , "Payal"));
+
+        m.addAttribute("result" , aliens);
+
+        return "showAliens";
+    }
+
     // # Model Attribute at Method Level
-    @RequestMapping("addAlien")
+    @PostMapping(value = "addAlien")
     public String addAlien(@ModelAttribute Alien a){
         return "result";
     }
