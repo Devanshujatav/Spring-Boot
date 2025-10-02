@@ -1,13 +1,19 @@
-package com.devanshu.controller;
+package com.devanshu.SpringREST.Controller;
 
-import com.devanshu.Repository.AlienRepo;
-import com.devanshu.model.Alien;
+import com.devanshu.SpringREST.Model.Alien;
+import com.devanshu.SpringREST.Repository.AlienRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
+        import java.util.Arrays;
 import java.util.List;
 
 public class HomeController {
